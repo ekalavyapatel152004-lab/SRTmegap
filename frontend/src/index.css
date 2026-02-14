@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #f3f4f6;
+}
+
+/* Include your PDF fix from earlier here too */
+#printable-area * { line-height: 1.5 !important; }
+#printable-area input, #printable-area select { min-height: 38px !important; padding-bottom: 8px !important; padding-top: 4px !important; box-sizing: border-box !important; }
+#printable-area th, #printable-area td { padding-bottom: 10px !important; padding-top: 6px !important; }
+#printable-area .flex.items-center.border { padding-bottom: 4px !important; align-items: center !important; }
+/* Hide number input arrows to allow perfectly centered tight text */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
