@@ -27,7 +27,8 @@ const Calculator = () => {
     useEffect(() => {
         if (id) {
             setIsLoading(true);
-            axios.get(`http://localhost:5000/api/estimates/${id}`)
+            // FIXED: Added /${id} back to the URL so it loads the correct estimate
+            axios.get(`https://srtmegap.onrender.com/api/estimates/${id}`)
                 .then(res => {
                     const data = res.data;
                     setCustomerName(data.customerName);
@@ -110,9 +111,10 @@ const Calculator = () => {
         setIsLoading(true);
         const estimateData = { customerName, phoneNumber, invoiceDate, rows, gstPercent, makingCost, grandTotal };
         
+        // UPDATED: Using the live Render URL
         const request = id 
-            ? axios.put(`http://localhost:5000/api/estimates/update/${id}`, estimateData)
-            : axios.post('http://localhost:5000/api/estimates/add', estimateData);
+            ? axios.put(`https://srtmegap.onrender.com/api/estimates/update/${id}`, estimateData)
+            : axios.post('https://srtmegap.onrender.com/api/estimates/add', estimateData);
 
         request
             .then(() => {

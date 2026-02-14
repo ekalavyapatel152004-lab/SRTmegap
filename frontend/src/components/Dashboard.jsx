@@ -15,7 +15,7 @@ const Dashboard = () => {
     }, []);
 
     const fetchEstimates = () => {
-        axios.get('http://localhost:5000/api/estimates')
+        axios.get('https://srtmegap.onrender.com/api/estimates')
             .then(res => {
                 setEstimates(res.data);
                 setLoading(false);
@@ -30,7 +30,7 @@ const Dashboard = () => {
     const deleteEstimate = (id, e) => {
         e.preventDefault(); // Stop the link click
         if(window.confirm("Are you sure you want to delete this estimate permanently?")) {
-            axios.delete(`http://localhost:5000/api/estimates/${id}`)
+            axios.delete(`https://srtmegap.onrender.com/api/estimates/${id}`)
                 .then(() => {
                     toast.success("Estimate deleted successfully.");
                     fetchEstimates(); // Reload list
