@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Plus, FileText, Trash2, Edit2, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
-import Navbar from './Navbar';
 
 const Dashboard = () => {
     const [estimates, setEstimates] = useState([]);
@@ -41,7 +40,6 @@ const Dashboard = () => {
 
     return (
         <div className="max-w-6xl mx-auto p-4 mt-8">
-            {/* Reusing the dark navbar style for dashboard header */}
             <div className="bg-gray-900 text-white p-6 rounded-t-lg flex justify-between items-center">
                  <div>
                     <h1 className="text-3xl font-bold">Dashboard</h1>
@@ -66,9 +64,7 @@ const Dashboard = () => {
                 ) : (
                     <div className="grid gap-4">
                         {estimates.map(est => (
-                            // The whole block is a link to edit
                             <Link to={`/edit/${est._id}`} key={est._id} className="group block bg-white border border-gray-200 p-5 rounded-xl shadow-sm hover:shadow-md transition-all hover:border-blue-300 cursor-pointer relative overflow-hidden">
-                                {/* Colored bar on left */}
                                 <div className="absolute left-0 top-0 bottom-0 w-2 bg-blue-500 group-hover:bg-blue-600 transition-colors"></div>
                                 <div className="flex justify-between items-center pl-4">
                                     <div className="flex items-center gap-4">
@@ -90,11 +86,9 @@ const Dashboard = () => {
                                          </div>
                                          
                                          <div className="flex gap-2 pl-4 border-l">
-                                              {/* Edit Icon (Visual only, whole block is link) */}
                                             <div className="p-2 text-blue-600 bg-blue-50 rounded hover:bg-blue-100 transition">
                                                 <Edit2 size={20} />
                                             </div>
-                                             {/* Delete Button */}
                                             <button onClick={(e) => deleteEstimate(est._id, e)} className="p-2 text-red-500 bg-red-50 rounded hover:bg-red-100 transition z-10 relative">
                                                 <Trash2 size={20} />
                                             </button>
